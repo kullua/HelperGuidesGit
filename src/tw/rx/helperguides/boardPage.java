@@ -1,6 +1,9 @@
 package tw.rx.helperguides;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,39 +20,29 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.text.Html;
+import android.text.Html.ImageGetter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class boardActivity extends Activity {
+public class boardPage extends Activity {
 	
-    //private ArrayList<String> list = new ArrayList<String>();
-    //private SimpleAdapter adapter = null;
-    private List<HashMap<String, Object>> videos = null;
-    private HashMap<String, Object> video = null;
     final String action = "2";
-    final String type = "1";
-    
+    final String type = "2";
+	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.board_activity);
-        //setContentView(R.layout.board_list);
-        
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.board_page);
 
-        
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -65,58 +58,39 @@ public class boardActivity extends Activity {
         .penaltyLog()
         .build());
         }
-        
-        //String data = getDataFromDB.getboardList(action,type);
-        String data = sendPostDataToInternet(action,type);
-        
+		
+		Intent intent = this.getIntent();
+		Bundle bundle = intent.getExtras();	//取得Bundle
+		
+	    TextView text = (TextView) findViewById(R.id.textView1);
+	    TextView errortext = (TextView) findViewById(R.id.errortext);
+	    //text.setText(bundle.getString("id"));
+	    String data = sendPostDataToInternet(action,type,bundle.getString("id"));
+	    text.setText(data);
+	   
         try {  
             JSONArray mArray = new JSONArray(data);
-            videos = new ArrayList<HashMap<String, Object>>();
+            
             for (int i = 0; i < mArray.length(); i++) {
                 JSONObject object = mArray.getJSONObject(i);
                 
                 String subject = object.getString("subject");
-                String id = object.getString("id");
-                video = new HashMap<String, Object>();
-                video.put("id", id);
-                video.put("subject", subject);
-                videos.add(video);
+                String content = object.getString("content");
+                setTitle(subject);
+                text.setText(Html.fromHtml(content));
             }
     	} catch (JSONException e) {  
             e.printStackTrace();  
         } 
-        
-        //BindData
-        List<HashMap<String,Object>> ListData = videos;
-        SimpleAdapter ListAdapter = new SimpleAdapter(this,ListData, R.layout.board_list,     
-                                        new String []{"id","subject"},   
-                                        new int []{R.id.id,R.id.subject});  
-          
-        final ListView list = (ListView)findViewById(R.id.listView1);
-        list.setAdapter(ListAdapter);
-        
-        //ItemClick
-        list.setOnItemClickListener(new OnItemClickListener(){
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				// TODO Auto-generated method stub
-				//Toast.makeText(boardActivity.this, "點擊第"+ (arg2+1) +"個項目", Toast.LENGTH_LONG).show();
-
-				HashMap<String,String> map= (HashMap<String,String>) list.getItemAtPosition(arg2);
-				String strid=map.get("id"); 
-				//Toast.makeText(boardActivity.this, "id=" + strid, Toast.LENGTH_LONG).show();
-				
-				Intent intent = new Intent(boardActivity.this,boardPage.class);
-		        intent.putExtra("id", strid);
-		        startActivity(intent);
-			}
-        });
-
+    	
+    	//text.setText(Html.fromHtml(content));
 	}
-
-
-	public String sendPostDataToInternet(String action,String type){
+	
+	public JSONObject getJSON(String sb) throws JSONException {  
+        return new JSONObject(sb);  
+    } 
+	
+	public String sendPostDataToInternet(String action,String type,String id){
 		String uriAPI = "http://trx.loveu.tw/apiHelperGuide.php";
     	/* 建立http post 連線 */
     	HttpPost httpRequest = new HttpPost(uriAPI);
@@ -124,6 +98,7 @@ public class boardActivity extends Activity {
     	List<NameValuePair> params = new ArrayList<NameValuePair>();
     	params.add(new BasicNameValuePair("action",action));
     	params.add(new BasicNameValuePair("type",type));
+    	params.add(new BasicNameValuePair("id",id));
     	
     	try{
     		/* 發出Http Request */

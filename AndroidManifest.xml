@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".boardActivity"></activity>
+        <activity android:name=".boardPage"></activity>
         <activity android:name=".guidesActivity"></activity>
     </application>
 
