@@ -74,10 +74,15 @@ public class boardPage extends Activity {
             for (int i = 0; i < mArray.length(); i++) {
                 JSONObject object = mArray.getJSONObject(i);
                 
-                String subject = object.getString("subject");
-                String content = object.getString("content");
-                setTitle(subject);
-                text.setText(Html.fromHtml(content));
+                String flag = object.getString("flag");
+                if (flag.equals("false")) {
+                	text.setText(Html.fromHtml("µL¸ê®Æ"));
+                } else {
+	                String subject = object.getString("subject");
+	                String content = object.getString("content");
+	                setTitle(subject);
+	                text.setText(Html.fromHtml(content));
+                }
             }
     	} catch (JSONException e) {  
             e.printStackTrace();  

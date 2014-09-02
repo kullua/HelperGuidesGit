@@ -3,7 +3,11 @@
 
     <string name="app_name">HelperGuides</string>
     <string name="mainTitle">Index</string>
-    <string name="boardlistTitle">boardlist</string>
+    <string name="boardlistTitle">公告</string>
+    <string name="guideslistTitle">攻略</string>
+    <string name="gameguideslistTitle1">新手教學</string>
+    <string name="gameguideslistTitle2">遊戲攻略</string>
+    <string name="gameguideslistTitle3">卡牌技能</string>
     <string name="hello_world">Hello world!</string>
     <string name="btnboard">公告</string>
 	<string name="boardcontent"></string>

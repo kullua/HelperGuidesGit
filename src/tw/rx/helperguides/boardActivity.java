@@ -24,6 +24,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 
+import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -47,8 +48,6 @@ public class boardActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.board_activity);
         //setContentView(R.layout.board_list);
-        
-
         
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -75,12 +74,18 @@ public class boardActivity extends Activity {
             for (int i = 0; i < mArray.length(); i++) {
                 JSONObject object = mArray.getJSONObject(i);
                 
-                String subject = object.getString("subject");
-                String id = object.getString("id");
-                video = new HashMap<String, Object>();
-                video.put("id", id);
-                video.put("subject", subject);
-                videos.add(video);
+                String flag = object.getString("flag");
+                if (flag.equals("false")) {
+                	TextView text = (TextView) findViewById(R.id.textView2);
+                	text.setText("©|µL¸ê®Æ");
+                } else {
+	                String subject = object.getString("subject");
+	                String id = object.getString("id");
+	                video = new HashMap<String, Object>();
+	                video.put("id", id);
+	                video.put("subject", subject);
+	                videos.add(video);
+                }
             }
     	} catch (JSONException e) {  
             e.printStackTrace();  
