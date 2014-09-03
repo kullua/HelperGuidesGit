@@ -25,6 +25,7 @@
         <activity android:name=".boardActivity"></activity>
         <activity android:name=".boardPage"></activity>
         <activity android:name=".guidesActivity"></activity>
+        <activity android:name=".guidesPage"></activity>
     </application>
 
 	<uses-permission android:name="android.permission.INTERNET" />

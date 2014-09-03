@@ -119,12 +119,17 @@ public class guidesActivity extends Activity {
 				// TODO Auto-generated method stub
 				//Toast.makeText(boardActivity.this, "點擊第"+ (arg2+1) +"個項目", Toast.LENGTH_LONG).show();
 
+				try{
 				HashMap<String,String> map= (HashMap<String,String>) list.getItemAtPosition(arg2);
 				String strid=map.get("id"); 
 				
 				Intent intent = new Intent(guidesActivity.this,guidesPage.class);
 		        intent.putExtra("id", strid);
 		        startActivity(intent);
+		        guidesActivity.this.finish();
+				} catch(Exception e){
+					e.getMessage();
+				}
 			}
         });
 

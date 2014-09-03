@@ -1144,6 +1144,7 @@ containing a value of this type.
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
+        public static final int webview=0x7f050045;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1204,6 +1205,7 @@ containing a value of this type.
         public static final int guides_list=0x7f03001d;
         public static final int guides_page=0x7f03001e;
         public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int webview=0x7f030020;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
