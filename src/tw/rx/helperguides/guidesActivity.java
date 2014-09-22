@@ -42,7 +42,7 @@ public class guidesActivity extends Activity {
     private HashMap<String, Object> video = null;
     final String action = "1";
     final String type = "1";
-    
+    String typeid="";
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +66,7 @@ public class guidesActivity extends Activity {
         
         Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();	//¨ú±oBundle
-        String typeid = bundle.getString("id");
+        typeid = bundle.getString("id");
         TextView textTitle = (TextView) findViewById(R.id.textView1);
         if (typeid.equals("1") ) {
         	textTitle.setText(R.string.gameguideslistTitle1);
@@ -126,6 +126,7 @@ public class guidesActivity extends Activity {
 				
 				Intent intent = new Intent(guidesActivity.this,guidesPage.class);
 		        intent.putExtra("id", strid);
+		        intent.putExtra("typeid", typeid);
 		        startActivity(intent);
 		        guidesActivity.this.finish();
 				} catch(Exception e){
