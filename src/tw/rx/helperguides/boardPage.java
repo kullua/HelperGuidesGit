@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.Html;
 import android.text.Html.ImageGetter;
+import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,6 +95,22 @@ public class boardPage extends Activity {
 	public JSONObject getJSON(String sb) throws JSONException {  
         return new JSONObject(sb);  
     } 
+	
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	
+    	if (keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            // Show home screen when pressing "back" button,
+            //  so that this app won't be closed accidentally
+			Intent intent = new Intent(boardPage.this,boardActivity.class);
+	        startActivity(intent);
+            
+            return true;
+        }
+    	
+    	return super.onKeyDown(keyCode, event);
+
+    }
 	
 	public String sendPostDataToInternet(String action,String type,String id){
 		String uriAPI = "http://trx.loveu.tw/apiHelperGuide.php";

@@ -43,6 +43,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.KeyEvent;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -52,6 +53,7 @@ public class guidesPage extends Activity {
 	
     final String action = "1";
     final String type = "2";
+    String useid = "";
 	
 	@SuppressLint("SetJavaScriptEnabled") @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,7 @@ public class guidesPage extends Activity {
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();	//¨ú±oBundle
 		String id= bundle.getString("id");
+		useid = id;
 	    //TextView text = (TextView) findViewById(R.id.textView1);
 	    //TextView errortext = (TextView) findViewById(R.id.errortext);
 	    //text.setText(bundle.getString("id"));
@@ -117,6 +120,24 @@ public class guidesPage extends Activity {
 			    }
 	
 	
+	    public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    	
+	    	if (keyCode == KeyEvent.KEYCODE_BACK)
+	        {
+	            // Show home screen when pressing "back" button,
+	            //  so that this app won't be closed accidentally
+				Intent intent = new Intent(guidesPage.this,guidesActivity.class);
+				intent.putExtra("id", useid);
+		        startActivity(intent);
+		        guidesPage.this.finish();
+	            
+	            return true;
+	        }
+	    	
+	    	return super.onKeyDown(keyCode, event);
+
+	    }
+		
 	public JSONObject getJSON(String sb) throws JSONException {  
         return new JSONObject(sb);  
     } 
