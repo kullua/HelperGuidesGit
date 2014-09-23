@@ -27,6 +27,7 @@ import android.os.StrictMode;
 import android.text.Html;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -47,6 +48,8 @@ public class boardActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //¡Ù¬√º–√D
+        this.requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView(R.layout.board_activity);
         //setContentView(R.layout.board_list);
         

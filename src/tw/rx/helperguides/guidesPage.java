@@ -44,6 +44,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
+import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -58,6 +59,8 @@ public class guidesPage extends Activity {
 	@SuppressLint("SetJavaScriptEnabled") @Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        //ÁôÂÃ¼ÐÃD
+        this.requestWindowFeature( Window.FEATURE_NO_TITLE );
 		setContentView(R.layout.webview);
 
         if (android.os.Build.VERSION.SDK_INT > 9) {

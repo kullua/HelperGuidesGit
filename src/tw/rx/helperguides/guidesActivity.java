@@ -26,6 +26,7 @@ import android.os.StrictMode;
 
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -46,6 +47,8 @@ public class guidesActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //ÁôÂÃ¼ÐÃD
+        this.requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView(R.layout.guides_activity);
         
         if (android.os.Build.VERSION.SDK_INT > 9) {

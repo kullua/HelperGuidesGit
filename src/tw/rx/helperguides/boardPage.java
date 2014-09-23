@@ -31,6 +31,7 @@ import android.os.StrictMode;
 import android.text.Html;
 import android.text.Html.ImageGetter;
 import android.view.KeyEvent;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,8 @@ public class boardPage extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        //ÁôÂÃ¼ÐÃD
+        this.requestWindowFeature( Window.FEATURE_NO_TITLE );
 		setContentView(R.layout.board_page);
 
         if (android.os.Build.VERSION.SDK_INT > 9) {

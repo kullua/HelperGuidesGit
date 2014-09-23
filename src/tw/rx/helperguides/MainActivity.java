@@ -42,13 +42,10 @@ public class MainActivity extends Activity {
         this.requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView(R.layout.activity_main);
         
-        //set text
-        //ImageView Bannerbutton = (ImageView) findViewById(R.id.imageBanner);
-        imageView = (ImageView) findViewById(R.id.imageBanner);
-        // Create an object for subclass of AsyncTask
-        GetXMLTask task = new GetXMLTask();
-        // Execute the task
-        task.execute(new String[] { URL });
+
+        //imageView = (ImageView) findViewById(R.id.imageBanner);
+        //GetXMLTask task = new GetXMLTask();
+        //task.execute(new String[] { URL });
         
         ImageView boardbutton = (ImageView) findViewById(R.id.image);
         boardbutton.setOnClickListener((OnClickListener) new boardClick());
