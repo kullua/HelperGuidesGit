@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">HelperGuides</string>
-    <string name="mainTitle">Index</string>
+    <string name="mainTitle">熱血三國攻略助手</string>
     <string name="boardlistTitle">公告</string>
     <string name="guideslistTitle">攻略</string>
     <string name="gameguideslistTitle1">新手教學</string>
@@ -11,6 +11,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="btnboard">公告</string>
 	<string name="boardcontent"></string>
+	<string name="facebook">粉絲團</string>
 	
 	
 	<string-array name="drawer_menu">

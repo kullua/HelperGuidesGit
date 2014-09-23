@@ -6,20 +6,27 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -31,7 +38,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //¡Ù¬√º–√D
+        this.requestWindowFeature( Window.FEATURE_NO_TITLE );
         setContentView(R.layout.activity_main);
+        
         //set text
         //ImageView Bannerbutton = (ImageView) findViewById(R.id.imageBanner);
         imageView = (ImageView) findViewById(R.id.imageBanner);
@@ -49,6 +59,9 @@ public class MainActivity extends Activity {
         imageview2.setOnClickListener((OnClickListener) new guides2Click());
         ImageView imageview3 = (ImageView) findViewById(R.id.image3);
         imageview3.setOnClickListener((OnClickListener) new guides3Click());
+        
+        ImageView imageview4 = (ImageView) findViewById(R.id.image4);
+        imageview4.setOnClickListener((OnClickListener) new fbClick());
         
         //
         //initActionBar();
@@ -186,5 +199,43 @@ public class MainActivity extends Activity {
     		MainActivity.this.finish();
        
         }
+    }
+    
+    private class fbClick implements OnClickListener {
+        public void onClick(View view) { 
+        	String facebookUrl = "https://www.facebook.com/rxloveutw";
+        	String facebookPackageName = "com.facebook.katana";
+        	Context context = null;
+        	try {
+        		int versionCode = getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
+                
+                Uri uri = Uri.parse("fb://facewebmodal/f?href=" + facebookUrl);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+
+            } catch (Exception e) {
+            	launchFacebook();
+            }
+       
+        }
+    }
+    
+    
+    public final void launchFacebook() {
+        final String urlFb = "https://www.facebook.com/rxloveutw";
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(urlFb));
+
+        // If a Facebook app is installed, use it. Otherwise, launch
+        // a browser
+        final PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> list =
+            packageManager.queryIntentActivities(intent,
+            PackageManager.MATCH_DEFAULT_ONLY);
+        if (list.size() == 0) {
+            final String urlBrowser = "https://www.facebook.com/rxloveutw";
+            intent.setData(Uri.parse(urlBrowser));
+        }
+
+        startActivity(intent);
     }
 }
