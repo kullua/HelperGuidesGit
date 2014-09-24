@@ -19,6 +19,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.app.SearchManager;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,9 +47,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
 
-        //imageView = (ImageView) findViewById(R.id.imageBanner);
+        imageView = (ImageView) findViewById(R.id.imageBanner);
         //GetXMLTask task = new GetXMLTask();
         //task.execute(new String[] { URL });
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
         
         ImageView boardbutton = (ImageView) findViewById(R.id.image);
         boardbutton.setOnClickListener((OnClickListener) new boardClick());
@@ -60,13 +66,47 @@ public class MainActivity extends Activity {
         ImageView imageview4 = (ImageView) findViewById(R.id.image4);
         imageview4.setOnClickListener((OnClickListener) new fbClick());
         
-        //
-        //initActionBar();
-        //initDrawer();
-        //initDrawerList();
-        //mNavigationDrawerItemTitles= getResources().getStringArray(R.array.drawer_menu);
-        //mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        try {
+            SearchView searchView = (SearchView) findViewById(R.id.sv_search);
+
+            searchView.setSubmitButtonEnabled(false);
+            searchView.setOnQueryTextListener(new OnQueryTextListener() {
+
+				@Override
+				public boolean onQueryTextChange(String arg0) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+
+				@Override
+				public boolean onQueryTextSubmit(String arg0) {
+					// TODO Auto-generated method stub
+					
+					searchlist(arg0.toString());
+					
+					//Toast.makeText(MainActivity.this, "您選擇的是:"+arg0.toString(), Toast.LENGTH_SHORT).show();
+					return true;
+				}
+
+            });
+
+
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+             
+    }
+    
+    public void searchlist(String text){
+    	try {
+		Intent intent = new Intent();
+		intent.setClass(MainActivity.this, searchActivity.class);
+		intent.putExtra("searchText", text);
+		startActivity(intent); 
+		MainActivity.this.finish();
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
     }
     
     public boolean onKeyDown(int keyCode, KeyEvent event) {

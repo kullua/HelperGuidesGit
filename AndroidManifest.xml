@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <application
@@ -27,6 +27,8 @@
         <activity android:name=".boardPage"></activity>
         <activity android:name=".guidesActivity"></activity>
         <activity android:name=".guidesPage"></activity>
+        <activity android:name=".searchActivity"></activity>
+        <activity android:name=".searchPage"></activity>
     </application>
 
 	<uses-permission android:name="android.permission.INTERNET" />

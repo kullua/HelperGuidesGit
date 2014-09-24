@@ -8,10 +8,12 @@
     <string name="gameguideslistTitle1">新手教學</string>
     <string name="gameguideslistTitle2">遊戲攻略</string>
     <string name="gameguideslistTitle3">卡牌技能</string>
+    <string name="searchTitle">搜尋結果</string>
     <string name="hello_world">Hello world!</string>
     <string name="btnboard">公告</string>
 	<string name="boardcontent"></string>
 	<string name="facebook">粉絲團</string>
+	<string name="changeline">\r\n</string>
 	
 	
 	<string-array name="drawer_menu">

@@ -15,23 +15,46 @@
        android:textSize="20sp" /> 
     
       <ImageView
-       android:id="@+id/imageBanner"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignParentLeft="true"
-       android:layout_below="@+id/textView1"
-       android:adjustViewBounds="true"
-       android:src="@drawable/top" 
-       android:scaleType="center" /> 
-
-      \r\n
-    
+          android:id="@+id/imageBanner"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/textView1"
+          android:scaleType="centerInside"
+          android:src="@drawable/top" />
+       
+      <TextView android:id="@+id/space"
+	    android:layout_width="match_parent"
+	    android:layout_height="5dp"
+	    android:padding="10dp"
+	    android:text=""
+	    android:layout_below="@+id/imageBanner" />
+      
+      <View android:id="@+id/line"
+		android:layout_width="match_parent"
+		android:layout_height="2dp"
+		android:background="#D3D3D3"
+		android:layout_below="@+id/space"
+		android:padding="10dp" />
+      
+      
+      <SearchView
+        android:id="@+id/sv_search"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:inputType="textFilter"
+		android:queryHint="please input search content"
+        android:imeOptions="actionSearch"
+        android:scaleType="center"
+        android:iconifiedByDefault="true"
+        android:layout_below="@+id/line" />
+      
    <TableLayout 
     android:id="@+id/tableLayout1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" 
     android:layout_centerInParent="true"
-    android:layout_below="@+id/imageBanner"
+    android:layout_below="@+id/sv_search"
     >
  
     <!-- frist image columns -->
@@ -44,8 +67,8 @@
  
 <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
         android:scaleType="center"
@@ -129,9 +152,10 @@
             android:id="@+id/image4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="center"
-            android:src="@drawable/ic_facebook" 
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_facebook" />
+
     </TableRow>
     
     <!-- second textview column -->
