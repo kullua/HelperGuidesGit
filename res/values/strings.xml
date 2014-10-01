@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">HelperGuides</string>
+    <string name="app_name">熱血三國攻略助手</string>
     <string name="mainTitle">熱血三國攻略助手</string>
     <string name="boardlistTitle">公告</string>
     <string name="guideslistTitle">攻略</string>
@@ -14,7 +14,7 @@
 	<string name="boardcontent"></string>
 	<string name="facebook">粉絲團</string>
 	<string name="changeline">\r\n</string>
-	
+	<string name="searchtext">請點擊以下圖示開始搜尋:</string>
 	
 	<string-array name="drawer_menu">
 	    <item>Apple</item>
