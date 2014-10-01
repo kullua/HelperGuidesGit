@@ -1072,17 +1072,12 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int ic_board=0x7f020057;
-        public static final int ic_board_bak=0x7f020058;
-        public static final int ic_facebook=0x7f020059;
-        public static final int ic_facebook_bak=0x7f02005a;
-        public static final int ic_guides1=0x7f02005b;
-        public static final int ic_guides1_bak=0x7f02005c;
-        public static final int ic_guides2=0x7f02005d;
-        public static final int ic_guides2_bak=0x7f02005e;
-        public static final int ic_guides3=0x7f02005f;
-        public static final int ic_guides3_bak=0x7f020060;
-        public static final int ic_launcher=0x7f020061;
-        public static final int top=0x7f020062;
+        public static final int ic_facebook=0x7f020058;
+        public static final int ic_guides1=0x7f020059;
+        public static final int ic_guides2=0x7f02005a;
+        public static final int ic_guides3=0x7f02005b;
+        public static final int ic_launcher=0x7f02005c;
+        public static final int top=0x7f02005d;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
