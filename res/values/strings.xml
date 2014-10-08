@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">熱血三國攻略助手</string>
+    <string name="app_name">熱三攻略助手</string>
     <string name="mainTitle">熱血三國攻略助手</string>
     <string name="boardlistTitle">公告</string>
     <string name="guideslistTitle">攻略</string>
